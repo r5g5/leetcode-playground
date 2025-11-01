@@ -11,27 +11,33 @@
 class Solution {
 public:
     ListNode* modifiedList(vector<int>& nums, ListNode* head) {
-        vector<int> v;
-        while (head) {
-            v.push_back(head->val);
-            head = head->next;
-        }
-
-        unordered_set<int> elements;
+        ListNode* tmp = head;
+        unordered_set<int> s;
         for (int& i : nums) {
-            elements.insert(i);
+            s.insert(i);
+        }
+        while (tmp != nullptr) {
+            if (s.find(tmp->val) == s.end())
+                break;
+            tmp = tmp->next;
         }
 
-        ListNode* newLinkedList = new ListNode();
-        ListNode* tmp = newLinkedList;
-        for (int& i : v) {
-            if (elements.find(i) == elements.end()) {
-                ListNode* node = new ListNode(i);
-                tmp->next = node;
-                tmp = node;
+        if (tmp == nullptr) {
+            return nullptr;
+        } else {
+            ListNode* prev = tmp;
+            ListNode* ans = prev;
+            tmp = tmp->next;
+            while (tmp != nullptr) {
+                if (s.find(tmp->val) != s.end()) {
+                    tmp = tmp->next;
+                    prev->next = tmp;
+                } else {
+                    prev = prev->next;
+                    tmp = tmp->next;
+                }
             }
+            return ans;
         }
-        newLinkedList = newLinkedList->next;
-        return newLinkedList;
     }
 };
