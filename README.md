@@ -1,2 +1,5 @@
-# leetcode-playground
-A collection of my LeetCode solutions and daily problem-solving practice in C++.
+# LeetCode Playground
+
+Welcome to my **LeetCode Playground** — a personal space where I solve, experiment, and document my approach to algorithmic problems.
+
+>  Daily challenges • C++ solutions • Problem-solving journey
