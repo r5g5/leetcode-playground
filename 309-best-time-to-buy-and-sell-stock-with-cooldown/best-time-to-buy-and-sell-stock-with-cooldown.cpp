@@ -2,7 +2,7 @@ class Solution {
 public:
     int maxProfit(vector<int>& prices) {
         const int n = prices.size();
-        int dp[5001][2];
+        int dp[n][2];
         memset(dp, -1, sizeof(dp));
         function<int(int, bool)> dfs = [&](int index, bool buying) -> int {
             if (index >= prices.size()) {
