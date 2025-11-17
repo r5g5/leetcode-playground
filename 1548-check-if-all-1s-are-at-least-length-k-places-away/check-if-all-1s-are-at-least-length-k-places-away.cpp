@@ -1,12 +1,15 @@
 class Solution {
 public:
     bool kLengthApart(vector<int>& nums, int k) {
-        int prevOne = -1;
-        for (int i = 0, n = nums.size(); i < n; i++) {
+        int count = k;
+        for (int i = 0; i < nums.size(); i++) {
             if (nums[i]) {
-                if ((prevOne != -1) && (i - prevOne - 1) < k)
+                if (count < k) {
                     return false;
-                prevOne = i;
+                }
+                count = 0;
+            } else {
+                count++;
             }
         }
         return true;
