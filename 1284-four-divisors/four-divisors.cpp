@@ -21,7 +21,6 @@ public:
         for (const int& num : nums) {
             auto noSum = getNoOfDivAndSum(num);
             if (noSum.first == 4) {
-                cout << "Num: " << num << endl;
                 ans += noSum.second;
             }
         }
