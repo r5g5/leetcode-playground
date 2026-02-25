@@ -12,22 +12,23 @@
 class Solution {
 private:
     long long totalSum = 0;
-    void dfs(TreeNode* head, string curr) {
+    void dfs(TreeNode* head, int currVal) {
         if (!head)
             return;
+            
         if (head && (head->left == nullptr) && (head->right == nullptr)) {
-            // leave node
-            const auto sum = stoll(curr + to_string(head->val), nullptr, 2);
-            totalSum += sum;
-            // cout << sum << endl;
+            // leaf node
+            currVal = (currVal << 1) | head->val;
+            totalSum += currVal;
         } else {
-            dfs(head->left, curr + to_string(head->val));
-            dfs(head->right, curr + to_string(head->val));
+            currVal = (currVal << 1) | (head->val);
+            dfs(head->left, currVal);
+            dfs(head->right, currVal);
         }
     }
 public:
     int sumRootToLeaf(TreeNode* root) {
-        dfs(root, "");
+        dfs(root, 0);
         return totalSum;
     }
 };
