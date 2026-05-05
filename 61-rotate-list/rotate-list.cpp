@@ -23,12 +23,12 @@ public:
 
         k = k % len;
 
+        if (k == 0)
+            return head;
+
         // Find new tail
         int newTailIdx = len - k - 1;
-
-        if (newTailIdx == len - 1) {
-            return head;
-        }
+        
         ListNode* newTail = head;
 
         for (int i = 0; i < newTailIdx; i++) {
