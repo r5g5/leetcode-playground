@@ -5,9 +5,8 @@ public:
             if (arr[start] == 0)
                 return true;
             else {
-                const int val = arr[start];
-                arr[start] = -1;
-                return canReach(arr, start - val) || canReach(arr, start + val);
+                arr[start] = -arr[start];
+                return canReach(arr, start - arr[start]) || canReach(arr, start + arr[start]);
             }
         }
         return false;
