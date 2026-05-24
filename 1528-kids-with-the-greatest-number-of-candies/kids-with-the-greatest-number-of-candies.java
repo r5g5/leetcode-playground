@@ -1,12 +1,12 @@
 class Solution {
     public List<Boolean> kidsWithCandies(int[] candies, int extraCandies) {
-        int maxCandies = 0;
-        for (int i = 0; i < candies.length; i++) {
-            maxCandies = Math.max(maxCandies, candies[i]);
+        var maxCandies = 0;
+        for (var candie : candies) {
+            maxCandies = Math.max(candie, maxCandies);
         }
         var result = new ArrayList<Boolean>(candies.length);
-        for (int i = 0; i < candies.length; i++) {
-            result.add(candies[i] + extraCandies >= maxCandies);
+        for (var candie : candies) {
+            result.add(candie + extraCandies >= maxCandies);
         }
         return result;
     }
