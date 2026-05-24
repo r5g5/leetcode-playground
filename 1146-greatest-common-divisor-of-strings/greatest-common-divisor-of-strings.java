@@ -1,22 +1,13 @@
 class Solution {
-    private boolean isValid(String s1, String s2, int k) {
-        final int l1 = s1.length(), l2 = s2.length();
-        if (l1 % k > 0 || l2 % k > 0)
-            return false;
-        
-        String base = s1.substring(0, k);
-
-        return s1.replace(base, "").isEmpty() && s2.replace(base, "").isEmpty();
+    private int gcd(int x, int y) {
+        if (y == 0)
+            return x;
+        return gcd(y, x % y);
     }
     public String gcdOfStrings(String str1, String str2) {
-        final int len1 = str1.length(), len2 = str2.length();
-
-        for (int i = Math.min(len1, len2); i >= 1; i--) {
-            if (isValid(str1, str2, i)) {
-                return str1.substring(0, i);
-            }
-        }
-
-        return "";
+        if (!((str1 + str2).equals(str2 + str1)))
+            return "";
+        
+        return str1.substring(0, gcd(str1.length(), str2.length()));
     }
 }
