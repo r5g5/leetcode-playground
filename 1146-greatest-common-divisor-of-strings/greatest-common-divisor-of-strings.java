@@ -9,7 +9,7 @@ class Solution {
         return s1.replace(base, "").isEmpty() && s2.replace(base, "").isEmpty();
     }
     public String gcdOfStrings(String str1, String str2) {
-        int len1 = str1.length(), len2 = str2.length();
+        final int len1 = str1.length(), len2 = str2.length();
 
         for (int i = Math.min(len1, len2); i >= 1; i--) {
             if (isValid(str1, str2, i)) {
