@@ -8,6 +8,6 @@ class Solution {
         for (var candie : candies) {
             result.add(candie + extraCandies >= maxCandies);
         }
-        return result;
+        return result; // TC: O(n), SC: O(1) if we don't consider the output, else O(n)
     }
 }
