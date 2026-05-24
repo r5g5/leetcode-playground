@@ -8,6 +8,8 @@ class Solution {
                 if (emptyLeft && emptyRight) {
                     flowerbed[i] = 1;
                     canPlantCnt++;
+                    if (canPlantCnt >= n)
+                        return true;
                 }
             }
         }
