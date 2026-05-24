@@ -18,6 +18,6 @@ class Solution {
                 i++; j--;
             }
         }
-        return s;
+        return s; // TC: O(n^2), SC: O(n)
     }
 }
