@@ -8,11 +8,9 @@ class Solution {
                 if (emptyLeft && emptyRight) {
                     flowerbed[i] = 1;
                     canPlantCnt++;
-                    if (canPlantCnt >= n)
-                        return true;
                 }
             }
         }
-        return canPlantCnt >= n;
+        return canPlantCnt >= n; // TC: O(n), SC: O(1)
     }
 }
