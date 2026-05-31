@@ -12,6 +12,6 @@ class Solution {
                 sum += a;
             }
         }
-        return true;
+        return true; // TC: O(n), SC: O(1)
     }
 }
