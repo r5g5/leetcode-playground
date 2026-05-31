@@ -9,6 +9,6 @@ class Solution {
             }
             return false;
         }
-        return true;
+        return true; // TC: O(nlogn), SC: O(1)
     }
 }
