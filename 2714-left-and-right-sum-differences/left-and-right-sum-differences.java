@@ -1,26 +1,17 @@
 class Solution {
-    private int getTotalRightSum(int[] nums, int n) {
-        int rightSum = 0;
-        for (int i = n - 1; i > 0; i--) {
-            rightSum += nums[i];
-        }
-        return rightSum;
-    }
     public int[] leftRightDifference(int[] nums) {
         final int n = nums.length;
-        int rightSum = getTotalRightSum(nums, n);
+        int[] ans = new int[n];
         int leftSum = 0;
         for (int i = 0; i < n; i++) {
-            int tmp = nums[i];
-            if (i == 0) {
-                nums[i] = Math.abs(leftSum - rightSum);
-            }
-            else {
-                rightSum -= nums[i];
-                nums[i] = Math.abs(leftSum - rightSum);
-            }
-            leftSum += tmp;
+            ans[i] = leftSum;
+            leftSum += nums[i];
         }
-        return nums; // TC: O(n), SC: O(1)
+        int rightSum = 0;
+        for (int i = n - 1; i >= 0; i--) {
+            ans[i] = Math.abs(ans[i] - rightSum);
+            rightSum += nums[i];
+        }
+        return ans; // TC: O(n), SC: O(1) / O(n) [depending on wheter we consider the output to be part of space complexity]
     }
 }
