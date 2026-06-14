@@ -10,45 +10,21 @@
  */
 class Solution {
     public int pairSum(ListNode head) {
-        int n = 0;
-        ListNode tmp = head;
-        while (tmp != null) {
-            n++;
-            tmp = tmp.next;
+        Deque<Integer> st = new ArrayDeque<>();
+        var curr = head;
+        while (curr != null) {
+            st.push(curr.val);
+            curr = curr.next;
         }
-        int mid = n / 2;
-        int curr = 0;
-        ListNode prev = null;
-        boolean startReversing = false;
-        tmp = head;
-        while (tmp != null) {
-            if (curr >= mid) {
-                ListNode next = tmp.next;
-                ListNode tmp2 = tmp;
-                if (!startReversing) {
-                    startReversing = true;
-                    prev.next = null;
-                    tmp2.next = null;
-                } else {
-                    tmp.next = prev;
-                }
-                prev = tmp2;
-                if (next == null) break;
-                tmp = next;
-            } else {
-                prev = tmp;
-                tmp = tmp.next;
-            }
-            curr++;
-        }
-        assert tmp != null : "Unexpected";
-        int ans = Integer.MIN_VALUE;
-        ListNode tail = tmp;
-        while (head != null && tail != null) {
-            ans = Math.max(ans, head.val + tail.val);
+        int n = st.size() / 2;
+        curr = head;
+        int maxSum = Integer.MIN_VALUE;
+        while (n > 0) {
+            int twin = st.pop();
+            maxSum = Math.max(maxSum, twin + head.val);
             head = head.next;
-            tail = tail.next;
+            n--;
         }
-        return ans; // TC: O(n), SC: O(1)
+        return maxSum; // TC: O(n), SC: O(n)
     }
 }
