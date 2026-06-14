@@ -10,19 +10,45 @@
  */
 class Solution {
     public int pairSum(ListNode head) {
-        var list = new ArrayList<Integer>();
-        while (head != null) {
-            list.add(head.val);
-            head = head.next;
+        int n = 0;
+        ListNode tmp = head;
+        while (tmp != null) {
+            n++;
+            tmp = tmp.next;
         }
-        int i = 0;
-        int j = list.size() - 1;
+        int mid = n / 2;
+        int curr = 0;
+        ListNode prev = null;
+        boolean startReversing = false;
+        tmp = head;
+        while (tmp != null) {
+            if (curr >= mid) {
+                ListNode next = tmp.next;
+                ListNode tmp2 = tmp;
+                if (!startReversing) {
+                    startReversing = true;
+                    prev.next = null;
+                    tmp2.next = null;
+                } else {
+                    tmp.next = prev;
+                }
+                prev = tmp2;
+                if (next == null) break;
+                tmp = next;
+            } else {
+                prev = tmp;
+                tmp = tmp.next;
+            }
+            curr++;
+        }
+        assert tmp != null : "Unexpected";
         int ans = Integer.MIN_VALUE;
-        while (i < j) {
-            ans = Math.max(ans, list.get(j) + list.get(i));
-            i++;
-            j--;
+        ListNode tail = tmp;
+        while (head != null && tail != null) {
+            ans = Math.max(ans, head.val + tail.val);
+            head = head.next;
+            tail = tail.next;
         }
-        return ans; // TC: O(n), SC: O(n)
+        return ans; // TC: O(n), SC: O(1)
     }
 }
