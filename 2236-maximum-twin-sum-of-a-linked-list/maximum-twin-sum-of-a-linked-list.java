@@ -23,6 +23,6 @@ class Solution {
             i++;
             j--;
         }
-        return ans;
+        return ans; // TC: O(n), SC: O(n)
     }
 }
