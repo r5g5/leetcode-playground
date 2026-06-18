@@ -6,6 +6,6 @@ public:
         // minutes hand moves from 0 - 59 = 360 / 60 = 6M
         // difference = 30H + 0.5M - 6M = 30H - 5.5M
         double degree = abs(30 * hour - 5.5 * minutes);
-        return (degree > 180 ? 360 - degree : degree);
+        return min(360 - degree, degree);
     }
 };
