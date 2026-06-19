@@ -6,6 +6,6 @@ class Solution {
             h += g;
             highestAltitude = Math.max(highestAltitude, h);
         }
-        return highestAltitude;
+        return highestAltitude; // TC: O(n), SC: O(1)
     }
 }
