@@ -23,5 +23,7 @@ class Solution {
                       charToCntMap.getOrDefault('l', 0) / 2,
                       charToCntMap.getOrDefault('o', 0) / 2,
                       charToCntMap.getOrDefault('n', 0));
+        
+        // TC: O(n), SC: O(n)
     }
 }
