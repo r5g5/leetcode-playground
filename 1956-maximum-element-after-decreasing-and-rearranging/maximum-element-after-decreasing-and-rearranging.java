@@ -5,11 +5,11 @@ class Solution {
         Arrays.sort(arr);        
         // First element must be 1, then all the next cons. elements must have a difference of at max 1.
         int cnt = 1;
-        for (int i = 0; i < n; i++) {
-            if (arr[i] >= cnt) {
+        for (int i = 1; i < n; i++) {
+            if (arr[i] >= cnt + 1) {
                 cnt++;
             }
         }
-        return cnt - 1;
+        return cnt; // TC: O(nlogn), SC: O(logn)
     }
 }
