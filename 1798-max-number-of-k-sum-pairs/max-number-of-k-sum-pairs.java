@@ -20,6 +20,6 @@ class Solution {
                 noOfOps++;
             }
         }
-        return noOfOps;
+        return noOfOps; // TC: O(n), SC: O(n)
     }
 }
