@@ -9,6 +9,6 @@ class Solution {
             if (height[i] > height[j]) j--;
             else i++;
         }
-        return maxArea;
+        return maxArea; // TC: O(n), SC: O(1)
     }
 }
