@@ -15,6 +15,6 @@ public:
                 j--;
             }
         }
-        return ops;
+        return ops; // TC: O(nlogn), SC: O(1)
     }
 };
