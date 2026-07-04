@@ -1,25 +1,18 @@
 class Solution {
     public int maxOperations(int[] nums, int k) {
-        var intFreq = new HashMap<Integer, Integer>();
-        for (int num : nums) {
-            if (!intFreq.containsKey(num))
-                intFreq.put(num, 0);
-            final int frequency = intFreq.get(num);
-            intFreq.put(num, frequency + 1);
-        }
-        int noOfOps = 0;
+        Map<Integer, Integer> freq = new HashMap<Integer, Integer>();
+        int ops = 0;
         for (int num : nums) {
             int rem = k - num;
-            if ((intFreq.getOrDefault(rem, 0) > 0) && 
-                (intFreq.getOrDefault(num, 0) > 0)) {
-                if (rem == num) {
-                    if (intFreq.getOrDefault(num, 0) < 2) continue;
-                }
-                intFreq.put(rem, intFreq.get(rem) - 1);
-                intFreq.put(num, intFreq.get(num) - 1);
-                noOfOps++;
+            int remCnt = freq.getOrDefault(rem, 0);
+            if (remCnt > 0) {
+                ops++;
+                if (remCnt == 1) freq.remove(rem);
+                else freq.put(rem, remCnt - 1);
+            } else {
+                freq.merge(num, 1, Integer::sum);
             }
         }
-        return noOfOps; // TC: O(n), SC: O(n)
+        return ops; // TC: O(n), SC: O(n)
     }
 }
