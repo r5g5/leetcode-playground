@@ -11,6 +11,6 @@ public:
                 }
             }
         }
-        return nums.size();
+        return nums.size(); // TC: O(n^2), SC: O(1)
     }
 };
