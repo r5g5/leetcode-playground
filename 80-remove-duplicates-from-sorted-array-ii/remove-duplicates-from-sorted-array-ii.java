@@ -19,6 +19,6 @@ class Solution {
                 j++;
             }
         }
-        return j;
+        return j; // TC: O(n), SC: O(1)
     }
 }
