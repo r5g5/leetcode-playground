@@ -13,6 +13,6 @@ public:
             r++;
         }
 
-        return maxProfit;
+        return maxProfit; // TC: O(n), SC: O(1)
     }
 };
