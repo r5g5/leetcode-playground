@@ -1,46 +1,34 @@
 class MyStack {
-    queue<int> _frontier;
+private:
+    queue<int> q;
 public:
     MyStack() {
         
     }
     
     void push(int x) {
-        _frontier.push(x);
+        q.push(x);
+
+        int n = q.size();
+
+        for (int i = 0; i < n - 1; i++) {
+            q.push(q.front());
+            q.pop();
+        }
     }
     
     int pop() {
-        queue<int> tmp;
-        while (_frontier.size() > 1) {
-            tmp.push(_frontier.front());
-            _frontier.pop();
-        }
-        int val = _frontier.front(); _frontier.pop();        
-
-        while (!tmp.empty()) {
-            _frontier.push(tmp.front()); tmp.pop();
-        }
-
+        int val = q.front();
+        q.pop();
         return val;
     }
     
     int top() {
-        queue<int> tmp;
-        while (_frontier.size() > 1) {
-            tmp.push(_frontier.front());
-            _frontier.pop();
-        }
-        int val = _frontier.front(); _frontier.pop();
-        tmp.push(val);
-        while (!tmp.empty()) {
-            _frontier.push(tmp.front());
-            tmp.pop();
-        }
-        return val;
+        return q.front();
     }
     
     bool empty() {
-        return _frontier.empty();
+        return q.empty();
     }
 };
 
