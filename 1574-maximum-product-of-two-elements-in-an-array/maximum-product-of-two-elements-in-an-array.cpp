@@ -1,7 +1,17 @@
 class Solution {
 public:
     int maxProduct(vector<int>& nums) {
-        sort(nums.rbegin(), nums.rend());
-        return (nums[0] - 1) * (nums[1] - 1); // TC: O(nlogn), SC: O(1) [not considering space complexity of sorting algorithm]
+        int largest = INT_MIN, secondLargest = INT_MIN;
+
+        for (const auto num : nums) {
+            if (num > largest) {
+                secondLargest = largest;
+                largest = num;
+            } else if (num > secondLargest) {
+                secondLargest = num;
+            }
+        }
+
+        return (largest - 1) * (secondLargest - 1); // TC: O(n), SC: O(1)
     }
 };
