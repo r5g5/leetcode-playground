@@ -26,11 +26,13 @@ public:
         cout << endl;
 
         cnt = 0;
+        int ans = 0;
         for (int i = nums.size() - 1; i >= 0; --i) {
             if (v[i] == 1) {
                 ++cnt;
             } else {
                 nums[i] += cnt;
+                ans = max(ans, nums[i]);
                 cnt = 0;
             }
         }
@@ -39,8 +41,7 @@ public:
         //     cout << i << " ";
         // }
 
-        sort(nums.rbegin(), nums.rend());
 
-        return nums[0]; // TC: O(nlogn), SC: O(n)
+        return ans; // TC: O(n), SC: O(n)
     }
 };
