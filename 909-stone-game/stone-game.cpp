@@ -30,6 +30,6 @@ private:
 public:
     bool stoneGame(vector<int>& piles) {
         memset(dp, -1, sizeof(dp));
-        return solve(piles, 0, piles.size() - 1, 0, 0, true); // TC: O(2^n), SC: O(n)
+        return solve(piles, 0, piles.size() - 1, 0, 0, true); // TC: O(n^2), SC: O(n^2)
     }
 };
