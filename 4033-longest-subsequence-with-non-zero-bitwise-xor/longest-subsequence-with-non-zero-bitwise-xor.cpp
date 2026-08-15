@@ -1,18 +1,12 @@
 class Solution {
-private:
-    int getXor(const vector<int>& v) {
-        int xorVal = 0;
-        for (int i : v) {
-            xorVal ^= i;
-        }
-        return xorVal;
-    }
 public:
     int longestSubsequence(vector<int>& nums) {
-        const int n = nums.size();
-        if (count(nums.begin(), nums.end(), 0) == n) {
+        const int n = static_cast<int>(nums.size());
+        if (all_of(nums.cbegin(), nums.cend(), [] (int x) {return x == 0; })) {
             return 0;
         }
-        return getXor(nums) == 0 ? n - 1 : n; // TC: O(n), SC: O(1)
+        const int xorVal = accumulate(nums.cbegin(), nums.cend(), 0, std::bit_xor<>());
+
+        return xorVal == 0 ? n - 1 : n; // TC: O(n), SC: O(1)
     }
 };
