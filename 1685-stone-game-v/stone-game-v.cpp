@@ -28,6 +28,6 @@ public:
         for (int i = 0; i < n; i++) {
             prefixSum[i+1] = prefixSum[i] + stoneValue[i];
         }
-        return solve(0, n - 1);
+        return solve(0, n - 1); // TC: O(n^3), SC: O(n^2)
     }
 };
