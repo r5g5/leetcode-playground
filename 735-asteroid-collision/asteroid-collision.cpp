@@ -32,6 +32,6 @@ public:
             activeAsteroids.pop();
         }
         reverse(asteroids.begin(), asteroids.end());
-        return asteroids; // TC: O(n^2), SC: O(n)
+        return asteroids; // TC: O(n) [ stack pushes and pop operations for each asteroid is atmost one], SC: O(n)
     }
 };
