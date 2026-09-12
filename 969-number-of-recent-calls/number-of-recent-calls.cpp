@@ -1,5 +1,5 @@
 class RecentCounter {
-    std::priority_queue<int, std::vector<int>, std::greater<int>> _frontier;
+    queue<int> _frontier;
 public:
     RecentCounter() {    
     }
@@ -7,13 +7,13 @@ public:
     int ping(int t) {
         _frontier.push(t);
         while (!_frontier.empty()) {
-            if (_frontier.top() < t - 3000) {
+            if (_frontier.front() < t - 3000) {
                 _frontier.pop();
                 continue;
             }
             break;
         }
-        return _frontier.size(); // TC: O(nlogn), SC: O(n)
+        return _frontier.size(); // TC: O(n), SC: O(n)
     }
 };
 
