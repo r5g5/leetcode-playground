@@ -15,6 +15,6 @@ class Solution {
 public:
     int minCostClimbingStairs(vector<int>& cost) {
         memset(dp, -1, sizeof(dp));
-        return min(solve(0, cost.size(), cost), solve(1, cost.size(), cost)); // TC: O(2^n), SC: O(n)
+        return min(solve(0, cost.size(), cost), solve(1, cost.size(), cost)); // TC: O(n), SC: O(n)
     }
 };
