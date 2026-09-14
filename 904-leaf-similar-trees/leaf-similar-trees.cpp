@@ -27,11 +27,6 @@ public:
 
         if (leafs1.size() != leafs2.size()) return false;
 
-        for (int i = 0, n = leafs1.size(); i < n; i++) {
-            // cout << leafs1[i] << "|| " << leafs2[i] << endl;
-            if (leafs1[i] != leafs2[i])
-                return false;
-        }
-        return true; // TC: O(n+m), SC: O(n)
+        return leafs1 == leafs2; // TC: O(n+m), SC: O(n)
     }
 };
