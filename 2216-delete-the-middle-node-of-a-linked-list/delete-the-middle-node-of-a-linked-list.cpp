@@ -17,16 +17,23 @@ public:
             n++;
             tmp = tmp->next;
         }
-        if (n == 1) return nullptr;
-        int mid = n / 2;
+        const int mid = n / 2;
+        ListNode* prev = nullptr;
         tmp = head;
-        for (int i = 0; i < mid - 1; i++) {
+
+        for (int i = 0; i < mid; i++) {
+            prev = tmp;
             tmp = tmp->next;
         }
-        if (tmp->next == nullptr) {
-            tmp = nullptr;
-        } else 
-            tmp->next = tmp->next->next;
+
+        if (prev == nullptr) return prev;
+
+        if (tmp == nullptr) {
+            prev->next = nullptr;
+        } else {
+            prev->next = tmp->next;
+        }
+
         return head; // TC: O(n), SC: O(1)
     }
 };
