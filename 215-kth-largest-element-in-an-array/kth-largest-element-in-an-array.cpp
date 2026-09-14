@@ -1,7 +1,13 @@
 class Solution {
 public:
     int findKthLargest(vector<int>& nums, int k) {
-        sort(nums.rbegin(), nums.rend());
-        return nums[k-1]; // TC: O(nlogn), SC: O(n) [ sorting algorithm space complexity]
+        priority_queue<int> q;
+        for (const int i : nums) {
+            q.push(i);
+        }
+        while (--k > 0) {
+            q.pop();
+        }
+        return q.top(); // TC: O(n.logk), SC: O(n)
     }
 };
