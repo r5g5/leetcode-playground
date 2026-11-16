@@ -12,6 +12,6 @@ public:
             }
             s = nextStr;
         }
-        return s; 
+        return s; // TC: O(n), SC: O(n)
     }
 };
