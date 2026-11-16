@@ -1,0 +1,17 @@
+class Solution {
+public:
+    string digitSum(string s, int k) {
+        while (s.size() > k) {
+            string nextStr;
+            for (int i = 0, n = s.size(); i < n; i += k) {
+                string tmp = s.substr(i, k);
+                int sum = accumulate(tmp.begin(), tmp.end(), 0, [](int sum, char digit) {
+                    return sum + (digit - '0');
+                });
+                nextStr += to_string(sum);
+            }
+            s = nextStr;
+        }
+        return s; // TC: O(n), SC: O(n)
+    }
+};
